@@ -1,0 +1,33 @@
+$columns: 12;
+
+// vewports
+$break-small: 320px;
+$break-medium: 768px;
+$break-large: 1024px;
+$break-extra: 1280px;
+
+// margins, paddings
+$properties: (m: 'margin', p: 'padding', b: 'border');
+$directions: (t: 'top', b: 'bottom', l: 'left', r: 'right', a: 'all');
+
+$aligns: (l: 'left', r: 'right', center: 'center');
+
+$base-sizes: ( s: 1.5vw, m: .7vw, l: 5px, x: 5px);
+$count-every: 1;
+
+$minvalue: 0;
+$maxvalue: 16;
+
+// fonts
+$font-size: ( s: 4.7vw, m: 2.08vw, l: 16px, x: 16px );
+$font-range: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+$counteveryforfont: .1;
+
+$default-font-color: #000;
+
+$colors: (
+  'white': #fff,
+  'grey': lighten($default-font-color, 60%),
+  'red': #d4145a,
+  'green': #00a99d
+);
