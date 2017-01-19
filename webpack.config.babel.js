@@ -2,7 +2,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const commonLoaders = [
 	{
@@ -11,27 +11,24 @@ const commonLoaders = [
 		exclude: '/node_modules/'
 	},
 	{
-		test: /\.jade/,
-		loaders: ['html',
-			'pug-html-loader?exports=false&pretty=true'
-		],
-		exclude: '/node_modules'
+		test: /\.vue$/,
+		loader: 'vue',
+		exclude: '/node_modules/',
 	},
 	{
+		root: path.join(__dirname, 'src/styles'),
 		test: /\.(scss|sass)$/,
-		loaders: ['style',
-			'css?importLoaders=1',
-			'sass',
-			'postcss?sourceMap=inline'
-		]
-	}
-
-];
+		loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&!postcss!sass')
+	}];
 
 const webpackConfig = {
 	context: path.join(__dirname, 'src'),
 	entry: {
-		javascript: ['webpack-hot-middleware/client', './app.js']
+		javascript: ['webpack-hot-middleware/client', './scripts/app.js']
+	},
+	vue: {
+		loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&!postcss!sass'),
+		postcss: require('./postcss.config').plugins
 	},
 	target: 'web',
 	output: {
@@ -39,7 +36,7 @@ const webpackConfig = {
 		filename: 'app.bundle.js',
 		publicPath: '/static'
 	},
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-inline-source-map',
 	debug: true,
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
@@ -49,16 +46,18 @@ const webpackConfig = {
 			'process.env': {
 				NODE_ENV: '"production"'
 			}
-		})
+		}),
+		new ExtractTextPlugin('bundle.css')
 	],
 	module: {
 		loaders: commonLoaders
 	},
 
 	resolve: {
-		extensions: ['', '.js', '.jsx'],
 		alias: {
-			vue$: 'vue/dist/vue.js'
+			'vue$': 'vue/dist/vue.js',
+			'styles': path.resolve(__dirname, 'src/styles'),
+			'sass-bundle': 'css?module&importLoaders=1!sass!postcss'
 		}
 	},
 

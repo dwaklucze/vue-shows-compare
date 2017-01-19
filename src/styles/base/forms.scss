@@ -1,5 +1,5 @@
 @import '../variables';
-@import 'utils/mixins';
+@import '../utils/mixins';
 
 @mixin input-default($size, $input) {
   display: block;

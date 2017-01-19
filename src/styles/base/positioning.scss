@@ -1,5 +1,5 @@
 @import '../variables';
-@import 'utils/mixins';
+@import '../utils/mixins';
 @each $direction, $property in $aligns {
   @if $direction != center {
     .float-#{$property} {

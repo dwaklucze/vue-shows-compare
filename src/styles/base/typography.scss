@@ -1,5 +1,5 @@
 @import '../variables';
-@import 'utils/mixins';
+@import '../utils/mixins';
 //font size
 @each $breakpoint, $size in $font-size {
   @for $font-size from $minvalue through $maxvalue {
