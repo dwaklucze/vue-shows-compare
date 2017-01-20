@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "babel-node server.js --env development",
     "build": "webpack --env production",
-    "postinstall": "npm run start"
+    "postinstall": "npm run dev"
   },
   "author": "",
   "license": "ISC",
