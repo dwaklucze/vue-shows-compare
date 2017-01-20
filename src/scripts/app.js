@@ -7,6 +7,8 @@ import store from './store';
 import routes from './routes';
 import App from './App.vue';
 
+import mixins from './_mixins';
+
 Vue.use(VueResource);
 Vue.use(VueRouter);
 //Vue.use(VueTouch);
@@ -20,18 +22,13 @@ if (process.env.NODE_ENV !== '"production"') {
 Vue.component('App', App);
 
 const router = new VueRouter({ routes });
-
 // register main app
 
 const root = new Vue({
 	store,
 	el: '#root',
 	router,
-	methods: {
-		getClass: (name) => {
-			return root.$children[0].$style[name];
-		}
-	}
+	methods: mixins
 });
 
 window.root = root;

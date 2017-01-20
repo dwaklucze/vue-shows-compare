@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 warn npm npm does not support Node.js v0.12.12
+2 warn npm You should probably upgrade to a newer version of node as we
+3 warn npm can't make any promises that npm will work with this version.
+4 warn npm You can find the latest version at https://nodejs.org/
+5 verbose cli [ 'node', '/home/user/.npm-global/bin/npm', 'run', 'dev' ]
+6 info using npm@4.0.2
+7 info using node@v0.12.12
+8 verbose run-script [ 'predev', 'dev', 'postdev' ]
+9 info lifecycle webpack-es6-starter@1.0.0~predev: webpack-es6-starter@1.0.0
+10 silly lifecycle webpack-es6-starter@1.0.0~predev: no script for predev, continuing
+11 info lifecycle webpack-es6-starter@1.0.0~dev: webpack-es6-starter@1.0.0
+12 verbose lifecycle webpack-es6-starter@1.0.0~dev: unsafe-perm in lifecycle true
+13 verbose lifecycle webpack-es6-starter@1.0.0~dev: PATH: /home/user/.npm-global/lib/node_modules/npm/bin/node-gyp-bin:/home/user/Desktop/vue/node_modules/.bin:/home/user/.npm-global/bin:/home/user/bin:/home/user/.local/bin:/home/user/.npm-global/bin:/home/user/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+14 verbose lifecycle webpack-es6-starter@1.0.0~dev: CWD: /home/user/Desktop/vue
+15 silly lifecycle webpack-es6-starter@1.0.0~dev: Args: [ '-c', 'babel-node server.js --env development' ]
+16 silly lifecycle webpack-es6-starter@1.0.0~dev: Returned: code: 1  signal: null
+17 info lifecycle webpack-es6-starter@1.0.0~dev: Failed to exec dev script
+18 verbose stack Error: webpack-es6-starter@1.0.0 dev: `babel-node server.js --env development`
+18 verbose stack Exit status 1
+18 verbose stack     at EventEmitter.<anonymous> (/home/user/.npm-global/lib/node_modules/npm/lib/utils/lifecycle.js:279:16)
+18 verbose stack     at EventEmitter.emit (events.js:110:17)
+18 verbose stack     at ChildProcess.<anonymous> (/home/user/.npm-global/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+18 verbose stack     at ChildProcess.emit (events.js:110:17)
+18 verbose stack     at maybeClose (child_process.js:1019:16)
+18 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1091:5)
+19 verbose pkgid webpack-es6-starter@1.0.0
+20 verbose cwd /home/user/Desktop/vue
+21 error Linux 4.4.0-59-generic
+22 error argv "node" "/home/user/.npm-global/bin/npm" "run" "dev"
+23 error node v0.12.12
+24 error npm  v4.0.2
+25 error code ELIFECYCLE
+26 error webpack-es6-starter@1.0.0 dev: `babel-node server.js --env development`
+26 error Exit status 1
+27 error Failed at the webpack-es6-starter@1.0.0 dev script 'babel-node server.js --env development'.
+27 error Make sure you have the latest version of node.js and npm installed.
+27 error If you do, this is most likely a problem with the webpack-es6-starter package,
+27 error not with npm itself.
+27 error Tell the author that this fails on your system:
+27 error     babel-node server.js --env development
+27 error You can get information on how to open an issue for this project with:
+27 error     npm bugs webpack-es6-starter
+27 error Or if that isn't available, you can get their info via:
+27 error     npm owner ls webpack-es6-starter
+27 error There is likely additional logging output above.
+28 verbose exit [ 1, true ]

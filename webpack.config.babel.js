@@ -18,7 +18,7 @@ const commonLoaders = [
 	{
 		root: path.join(__dirname, 'src/styles'),
 		test: /\.(scss|sass)$/,
-		loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&!postcss!sass?outputStyle=compressed')
+		loader: ExtractTextPlugin.extract('style', 'css?module?sourceMaps&importLoaders=1&!postcss!sass?outputStyle=compressed')
 	}];
 
 const webpackConfig = {
