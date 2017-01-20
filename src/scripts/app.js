@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import VueTouch from 'vue-touch';
+//import VueTouch from 'vue-touch';
 
 import store from './store';
 import routes from './routes';
@@ -9,7 +9,7 @@ import App from './App.vue';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
-Vue.use(VueTouch);
+//Vue.use(VueTouch);
 
 
 if (process.env.NODE_ENV !== '"production"') {

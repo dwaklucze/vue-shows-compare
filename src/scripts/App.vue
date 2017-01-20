@@ -5,7 +5,7 @@ main(:class="$style['w-3']")
 
 </template>
 
-<style module lang="sass">
+<style module lang="sass?sourceMap">
 
 @import '../styles/helpers';
 
