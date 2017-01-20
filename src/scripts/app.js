@@ -23,8 +23,17 @@ const router = new VueRouter({ routes });
 
 // register main app
 
-export default new Vue({
+const root = new Vue({
 	store,
 	el: '#root',
-	router
+	router,
+	methods: {
+		getClass: (name) => {
+			return root.$children[0].$style[name];
+		}
+	}
 });
+
+window.root = root;
+
+export default root;

@@ -18,13 +18,13 @@ const commonLoaders = [
 	{
 		root: path.join(__dirname, 'src/styles'),
 		test: /\.(scss|sass)$/,
-		loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&!postcss!sass')
+		loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&!postcss!sass?outputStyle=compressed')
 	}];
 
 const webpackConfig = {
 	context: path.join(__dirname, 'src'),
 	entry: {
-		javascript: ['webpack-hot-middleware/client', './scripts/app.js']
+		javascript: ['babel-polyfill', 'webpack-hot-middleware/client', './scripts/app.js']
 	},
 	vue: {
 		loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&!postcss!sass'),
