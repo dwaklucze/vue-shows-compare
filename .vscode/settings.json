@@ -18,7 +18,7 @@
   "terminal.integrated.fontSize": 12,
   "extensions.autoUpdate": true,
   "less.validate": false,
-  "workbench.sideBar.location": "right",
+  "workbench.sideBar.location": "left",
   "editor.lineHeight": 14,
   "editor.fontLigatures": true,
   "editor.mouseWheelZoom": true,
