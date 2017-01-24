@@ -15,8 +15,9 @@
 
   // with margin
   .c-#{$col} {
+    $calculated: calc(calc(calc(100% / #{$columns}) * #{$col}) - 1%);
     @include row-basics;
-    width: calc(100% / $columns * $col) - 1%;
+    width: $calculated;
 
     @if ($col < $columns) {
       margin-bottom: 1%;
@@ -25,8 +26,7 @@
 
     &-set {
       @include row-basics;
-      width: calc(calc(100% / #{$columns} * #{$col}) + 1%);
-
+      width: calc(#{$calculated} + 1%);
       @if ($col < $columns) {
         margin-bottom: 1%;
         margin-right: 0;

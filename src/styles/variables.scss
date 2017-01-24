@@ -24,10 +24,3 @@ $font-range: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 $counteveryforfont: .1;
 
 $default-font-color: #000;
-
-$colors: (
-  'white': #fff,
-  'grey': lighten($default-font-color, 60%),
-  'red': #d4145a,
-  'green': #00a99d
-);

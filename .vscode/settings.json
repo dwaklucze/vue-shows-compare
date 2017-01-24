@@ -23,5 +23,6 @@
   "editor.fontLigatures": true,
   "editor.mouseWheelZoom": true,
   "vsicons.dontShowNewVersionMessage": true,
-  "typescript.check.tscVersion": false
+  "typescript.check.tscVersion": false,
+  "vsicons.presets.angular": false
 }

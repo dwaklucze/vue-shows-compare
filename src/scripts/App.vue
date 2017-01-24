@@ -1,12 +1,16 @@
 <template lang="jade">
 
-main(:class="$style['w-3']")
-  router-view
+main
+  section.section
+    div.container
+      router-view
 
 </template>
 
-<style module lang="sass?sourceMap">
+<style lang="!postcss!sass?outputStyle=compressed">
 
-@import '../styles/helpers';
+@charset "utf-8";
+
+@import "~bulma/bulma";
 
 </style>

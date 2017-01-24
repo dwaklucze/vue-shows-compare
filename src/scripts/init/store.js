@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 // the root, initial state object
 const state = {
-
+	User: {},
 };
 
 // define the possible mutations that can be applied to our state
