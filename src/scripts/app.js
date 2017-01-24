@@ -9,15 +9,24 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
+import * as firebase from 'firebase';
+
+import VueFire from 'vuefire';
+import localFirebase from './init/firebase';
+window.firebaseapp = firebase.initializeApp(localFirebase.config);
+window.firedb = window.firebaseapp.database();
+
+
+Vue.use(VueFire);
+
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-
 Vue.use(VueAxios, axios);
 
 
 import lodash from 'lodash';
-
 window._ = lodash();
+
 
 import store from './init/store';
 import routes from './init/routes';
@@ -43,6 +52,7 @@ const root = new Vue({
 	el: '#root',
 	router: new VueRouter({ routes }),
 	methods: mixins
+
 });
 
 window.root = root;
