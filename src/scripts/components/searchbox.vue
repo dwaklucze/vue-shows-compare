@@ -150,7 +150,7 @@
       overflow: hidden;
       width: 100%;
     
-      transition: all .6s ease;
+      transition: opacity .1s ease, max-height .2s ease;
       top: 1px;
       left: 0;
       right: 0;
@@ -165,7 +165,8 @@
 
       max-height: 220px;
       opacity: 1;
-
+      
+      transition: opacity .1s ease, max-height .2s ease;
     }
 
     .disabled {
