@@ -2,6 +2,6 @@
 .columns
   div.is-6
     searchbox(variable="movieOne")
-    searchbox(variable="movieOne")
+    searchbox(variable="movieTwo")
 
 </template>
