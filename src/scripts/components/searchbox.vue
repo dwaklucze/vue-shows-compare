@@ -1,7 +1,7 @@
 <template lang="jade">
 section(v-bind:class="{'is-loading': isLoading && movieLookup }").control
 
-  input(type='text', placeholder='Type movie name here...' v-model="movieLookup" @keyup="search" @click="toggleDropdown()" @blur="visible = false").input
+  input(debounce="3000" type='text', placeholder='Type movie name here...' v-model="movieLookup" @keyup="search" @click="toggleDropdown()" @blur="visible = false").input
 
 
   div(v-if="visible && suggested.length").wrapper
@@ -46,14 +46,9 @@ section(v-bind:class="{'is-loading': isLoading && movieLookup }").control
         this.isLoading = true;
         this.visible = true;
 
-         _.debounce(() => {
-           console.log('hello');
-
-        }, 1250);
-        
+        console.log('hello');
 
       },
-
 
       toggleDropdown(){
         this.visible = !this.visible;
@@ -61,21 +56,12 @@ section(v-bind:class="{'is-loading': isLoading && movieLookup }").control
 
       getSuggestions(){
         this.isLoading = true;
+
         if(!this.movieLookup) {
           this.isLoading = false;
           this.suggested = [];
           return;
         }
-        return Vue.axios
-        .get(`http://www.omdbapi.com/?s=${this.movieLookup}`)
-        .then((response) => {
-          if(!response) {
-            return;
-          }
-          this.suggested = response.data.Search;
-          this.isLoading = false;
-          return this.suggested;
-        })
       }
 
     },
