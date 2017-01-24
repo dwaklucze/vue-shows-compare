@@ -19,7 +19,7 @@
   "extensions.autoUpdate": true,
   "less.validate": false,
   "workbench.sideBar.location": "left",
-  "editor.lineHeight": 14,
+  "editor.lineHeight": 20,
   "editor.fontLigatures": true,
   "editor.mouseWheelZoom": true,
   "vsicons.dontShowNewVersionMessage": true,

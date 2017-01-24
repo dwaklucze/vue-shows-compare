@@ -112,7 +112,8 @@
 
       props: {
 
-        variable: { required: true }
+        variable: { required: true },
+        collection: { required: true }
 
       }
     }
