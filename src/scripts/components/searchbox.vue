@@ -11,8 +11,8 @@
       div.dropdown-list(:class="{'open': visible }")
         p.menu-label Sugessted
         ul.menu-list
-          li(v-for="item in suggested")
-            a {{item.Title}}
+          li(v-for="(item, index) in suggested")
+            a(@click="select(index)") {{item.Title}}
           li(v-if="!suggested && !isLoading")
             a.disabled No results...
 
@@ -21,10 +21,10 @@
 
 <script>
 
-  import store from '../init/store';
   import Vue from 'vue';
   import mixins from '../init/mixins';
   import axios from 'vue-axios';
+  import store from '../init/store';
 
 
   const component = {
@@ -38,7 +38,7 @@
           debounce: null,
           lookup: '',
           suggested: [],
-
+          selected: [],
         }
       },
 
@@ -51,7 +51,20 @@
           this.getSuggestions();
 
         },
+        select(index){
 
+          let selected = this.suggested[index];
+
+            Vue.axios
+            .get(`https://omdbapi.com/?i=${selected.imdbID}`)
+            .then(( response ) => {
+              this.$store.commit('assign', {
+                    result: response.data,
+                    variable: this.variable,
+                    collection: this.collection
+              });   
+            });  
+        },
 
         getSuggestions() {
 
@@ -63,19 +76,19 @@
 
             this.isLoading = false;
             this.suggested = [];
-
             return;
           }
 
           this.debounce = setTimeout(() => {
 
             Vue.axios
-            .get(`http://omdbapi.com/?s=${this.lookup}`)
+            .get(`https://omdbapi.com/?s=${this.lookup}`)
             .then(( response ) => this.suggested = response.data.Search);
 
             vm.isLoading = false;
             vm.visible = true;
 
+           // vm.$emit = ('foundSuggestions', this.suggested);
           }, 1050);
 
         },
@@ -115,9 +128,9 @@
         variable: { required: true },
         collection: { required: true }
 
-      }
-    }
-
+      },
+    };
+    
   export default component;
 
 </script>

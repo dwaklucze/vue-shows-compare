@@ -1,11 +1,9 @@
 import 'babel-polyfill';
 
 import Vue from 'vue';
-import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
-Vue.use(Vuex);
 Vue.use(VueResource);
 Vue.use(VueRouter);
 

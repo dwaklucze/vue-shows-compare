@@ -59,7 +59,7 @@ const webpackConfig = {
 
 	resolve: {
 		alias: {
-			'vue$': 'vue/dist/vue.js',
+			'vue$': 'vue/dist/vue.common.js',
 			'firebase$': 'firebase/firebase-browser.js',
 			'firebasedb$': 'firebase/firebase-database.js',
 			'firebaseauth$': 'firebase/firebase-auth.js',
