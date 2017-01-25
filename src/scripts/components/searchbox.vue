@@ -39,6 +39,7 @@
           lookup: '',
           suggested: [],
           selected: [],
+          store: this.$store.User
         }
       },
 
@@ -54,7 +55,7 @@
         select(index){
 
           let selected = this.suggested[index];
-
+          
             Vue.axios
             .get(`https://omdbapi.com/?i=${selected.imdbID}`)
             .then(( response ) => {
@@ -129,6 +130,13 @@
         collection: { required: true }
 
       },
+
+      computed: {
+        result() {
+          clearTimeout(this.debounce);
+          console.log(this.result);
+        }
+      }
     };
     
   export default component;

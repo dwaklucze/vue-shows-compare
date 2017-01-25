@@ -1,7 +1,6 @@
 <template lang="jade">
-.columns
-  div.is-6
-    searchbox(variable="movieOne" collection="User")
-    searchbox(variable="movieTwo" collection="User")
+
+  .column.is-9
+    searchbox-result
 
 </template>
