@@ -21,11 +21,6 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
-
-import lodash from 'lodash';
-window._ = lodash();
-
-
 import store from './init/store';
 import routes from './init/routes';
 
@@ -41,20 +36,16 @@ if (process.env.NODE_ENV !== '"production"') {
 
 
 Vue.component('App', App);
+// register main app
+/* eslint-disable no-new */
+
 Vue.component('searchbox-result', SearchboxRES);
 Vue.component('searchbox', Searchbox);
 
-// register main app
-// eslint-disable no-new
-
-const root = new Vue({
+export default new Vue({
 	store,
 	el: '#root',
 	router: new VueRouter({ routes }),
 	methods: mixins
 
 });
-
-window.root = root;
-
-export default root;

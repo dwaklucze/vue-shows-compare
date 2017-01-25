@@ -2,36 +2,40 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-Vue.use(Vuex);
-
 import _ from 'lodash';
+Vue.use(Vuex);
 
 // the root, initial state object
 const state = {
 	User: {
-		search: {}
+		search: []
 	}
 };
 
 // define possible getters
 const getters = {
-	getSearchResults: state => {
-		console.log(state);
+	getSearchResults: () => {
+		return state.User.search;
 	}
 };
 
 // define the possible mutations that can be applied to our state
 const mutations = {
 	assign(s, data) {
-		const desired = s[data.collection].search[data.variable] = {};
+		if (s[data.collection].search.length > 1) {
+			s[data.collection].search = [];
+		}
+		const desired = data.result;
 
-		Object.assign(desired, data.result);
-		desired.Writer = desired.Writer.split(',');
-		desired.Actors = desired.Actors.split(',');
+		desired.Writer = desired.Writer.replace(/ *\([^)]*\) */g, '').split(',');
+		desired.Actors = desired.Actors.replace(/ *\([^)]*\) */g, '').split(',');
+
 		/* eslint-disable no-magic-numbers */
 		desired.imdbRating = ((desired.imdbRating * 10) / 2);
 
-		return desired;
+		if (s[data.collection].search.push(data.result)) {
+			return _.uniqWith(s[data.collection].search, _.isEqual);
+		}
 	}
 };
 

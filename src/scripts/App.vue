@@ -1,14 +1,12 @@
 <template lang="jade">
-main.section
-  .columns
+main.container
+  .columns.section
     aside.column.is-3
       searchbox(variable="movieOne" collection="User")
       searchbox(variable="movieTwo" collection="User")
 
-    .column.is-9
-      section
-        div.container
-          router-view
+    section.is-9
+          searchbox-result
 </template>
 
 <style lang="!postcss!sass?outputStyle=compressed">

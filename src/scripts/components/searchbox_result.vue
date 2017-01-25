@@ -1,46 +1,68 @@
 <template lang="jade">
-.column.is-6(@if="result") searchbox reults
-  .column.is-12
-    .card
-      .card-image
-        figure.image.is-4by3
-          img(src='http://bulma.io/images/placeholders/1280x960.png', alt='Image')
-      .card-content
-        .media
-          .media-left
-            figure.image(style='height: 40px; width: 40px;')
-              img(src='http://bulma.io/images/placeholders/96x96.png', alt='Image')
-          .media-content
-            p.title.is-4 John Smith
-            p.subtitle.is-6 @johnsmith
-        .content
-          a @bulmaio
-          a #css
-          a #responsive
-          br
-          small 11:09 PM - 1 Jan 2016
+span(v-if="details")
+  .column.is-6(v-for="item in loadedData")
+  
+      .card.hero
+        .card-image
+          figure.image.is-4by3
+            img(v-bind:src="item.Poster", alt='Image') 
 
+        .column
 
+              h1.title.is-5 {{item.Title}} ({{item.Year}})
+              h2.subtitle.is-6 Director: {{item.Director}}
+
+        .is-4.hero.is-dark
+            .columns.container.is-marginless
+
+              p.column.is-6
+                strong Actors
+                ul.list-people
+                  li(v-for="actor in item.Actors")
+                    a {{actor}}
+              p.column.is-6
+                strong Writers
+                ul.list-people
+                  li(v-for="writer in item.Writer")
+                    a {{writer}}
+
+          .column
+            p {{item.Plot}}
+            
+          .column.has-text-right 
+            small Released: {{item.Released}}
 </template>
 
 <script>
-import vue from 'vue';
+import Vue from 'vue';
 import store from '../init/store';
+const bus = new Vue({});
+  
 
 const component = {
-  data() {
 
-  return {
-    store: this.$store.User,
-    getResults() {
-      console.log(this.$store.getSearchResults());
-    }
-  }
-},
+    data(){
+      return {
+        loadedData: {},
+        isLoaded: false
+      }
+    },
 
   computed: {
-    result(newVal){    }
+    details(){
+
+     this.$parent.$on('searchbox-ITEM_SELECTED', (msg) => {
+      this.loadedData = this.$store.getters.getSearchResults;    
+    });
+  
+    return this.loadedData;
+    }
+},
+watch: {
+  loadedData(newVal) {
+    return this.$store.getters.getSearchResults;
   }
+}
 
 }
 

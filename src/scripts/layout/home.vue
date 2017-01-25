@@ -1,6 +1,6 @@
 <template lang="jade">
 
-  .column.is-9
+  .columns
     searchbox-result
 
 </template>

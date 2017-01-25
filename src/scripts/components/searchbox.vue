@@ -3,16 +3,21 @@
   form.control(v-bind:class="{'is-loading': isLoading }", 
   @submit.prevent="search()")
 
-    input.input(type='text' placeholder="Type movie name here..." 
-    v-model="lookup" v-on:keydown="search()" 
-    @focus="toggleDropdown()" @blur="onBlur()")
+    input.input(type='text' 
+      placeholder="Type movie name here..." 
+      v-model="lookup" v-on:keydown="search()" 
+      @focus="toggleDropdown()" @blur="onBlur()")
 
     div.wrapper
       div.dropdown-list(:class="{'open': visible }")
+      
         p.menu-label Sugessted
+
         ul.menu-list
           li(v-for="(item, index) in suggested")
-            a(@click="select(index)") {{item.Title}}
+            a(@click="select(index)") 
+              {{item.Title}}
+
           li(v-if="!suggested && !isLoading")
             a.disabled No results...
 
@@ -26,7 +31,8 @@
   import axios from 'vue-axios';
   import store from '../init/store';
 
-
+  const bus = new Vue({});
+  
   const component = {
 
       data() {
@@ -37,9 +43,7 @@
           visible: false,
           debounce: null,
           lookup: '',
-          suggested: [],
-          selected: [],
-          store: this.$store.User
+          suggested: []
         }
       },
 
@@ -54,17 +58,28 @@
         },
         select(index){
 
+          let vm = this;
           let selected = this.suggested[index];
           
             Vue.axios
             .get(`https://omdbapi.com/?i=${selected.imdbID}`)
             .then(( response ) => {
-              this.$store.commit('assign', {
-                    result: response.data,
-                    variable: this.variable,
-                    collection: this.collection
-              });   
-            });  
+
+              this.suggested[index] = response.data;
+
+              const result = {
+                      result: response.data,
+                      variable: this.variable,
+                      collection: this.collection
+              };
+
+              this.$store.commit('assign', result);  
+              this.$parent.$emit('searchbox-ITEM_SELECTED',result);
+
+              // uncheck only if u want update input with selected item
+              // this.lookup = selected.Title;
+            });
+
         },
 
         getSuggestions() {
@@ -88,8 +103,6 @@
 
             vm.isLoading = false;
             vm.visible = true;
-
-           // vm.$emit = ('foundSuggestions', this.suggested);
           }, 1050);
 
         },
@@ -117,7 +130,7 @@
 
             this.visible = false;
 
-          }, 150);
+          }, 250);
 
         },
       
@@ -131,7 +144,7 @@
 
       },
 
-      computed: {
+      watch: {
         result() {
           clearTimeout(this.debounce);
           console.log(this.result);
