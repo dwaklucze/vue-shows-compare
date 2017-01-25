@@ -32,6 +32,7 @@ import routes from './init/routes';
 import mixins from './init/mixins';
 
 import App from './App.vue';
+import Details from './components/details.vue';
 import Searchbox from './components/searchbox.vue';
 
 if (process.env.NODE_ENV !== '"production"') {
@@ -40,6 +41,7 @@ if (process.env.NODE_ENV !== '"production"') {
 
 
 Vue.component('App', App);
+Vue.component('details', Details);
 Vue.component('searchbox', Searchbox);
 
 // register main app
