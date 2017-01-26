@@ -1,8 +1,13 @@
 <template lang="jade">
 div(v-if="details || matches")
-  transition-group(name="list" tag="div").columns
+  .notification.is-success(v-if="matches && !isNotifyClosed")
+    button(@click="isNotifyClosed = true").delete 
+    p Wow! U just have found some matches in comparison on these two movies, congratulations!
+      br
+      small (Matches are hightlighted with green color)
+  transition-group(name="list" tag="div").columns.is-mobile
+        
     .column.is-half(v-for="item in details" v-bind:key="item")
-
 
       .card
         .card-image
@@ -15,7 +20,7 @@ div(v-if="details || matches")
               h2.subtitle.is-6 Director: {{item.Director}}
 
         .is-4.hero.is-dark
-              .columns.container.is-marginless
+              .columns.is-mobile.container.is-marginless
               
                 p.column.is-6
                   strong Actors
@@ -36,10 +41,8 @@ div(v-if="details || matches")
               small Released: {{item.Released}}
 
 
-  .notification.is-success(v-if="matches && !isNotifyClosed")
-    button(@click="isNotifyClosed = true").delete 
-    p.
-      Wow! U just have found some matches in comparison on these two movies, congratulations!
+
+
 </div>
 
 </template>
