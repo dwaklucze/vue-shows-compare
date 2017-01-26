@@ -2,3 +2,7 @@ node_modules
 static
 build
 *.log
+
+.firebaserc
+database.rules.json
+firebase.json
