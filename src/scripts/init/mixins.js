@@ -18,6 +18,10 @@ const mixins = {
 			timeout = setTimeout(later, wait);
 			if (callNow) func.apply(context, args);
 		};
+	},
+	cleanAndTrim(str) {
+		return str.replace(/ *\([^)]*\) */g, '').split(',')
+		.map(item => _.trim(item));
 	}
 };
 

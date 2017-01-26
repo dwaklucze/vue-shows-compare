@@ -6,7 +6,6 @@
   },
   "eslint.enable": true,
   "eslint.nodePath": "~/.npm-global/lib/node_modules",
-  "editor.fontFamily": "'Menlo', 'Roboto Mono', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.fontSize": 12,
   "editor.tabSize": 2,
   "editor.rulers": [

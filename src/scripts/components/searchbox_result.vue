@@ -84,7 +84,7 @@ const component = {
         Director: _.intersection([first.Director], [second.Director])[0]
       }
 
-      return _.omitBy(match, _.isEmpty);
+      return match;
     },
   },
   methods: {

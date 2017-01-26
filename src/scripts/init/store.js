@@ -3,6 +3,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import _ from 'lodash';
+
+import mixins from './mixins';
+
 Vue.use(Vuex);
 
 // the root, initial state object
@@ -27,8 +30,8 @@ const mutations = {
 	assign(s, data) {
 		const desired = data.result;
 
-		desired.Writer = desired.Writer.replace(/ *\([^)]*\) */g, '').split(',');
-		desired.Actors = desired.Actors.replace(/ *\([^)]*\) */g, '').split(',');
+		desired.Writer = mixins.cleanAndTrim(desired.Writer);
+		desired.Actors = mixins.cleanAndTrim(desired.Actors);
 
 		/* eslint-disable no-magic-numbers */
 		desired.imdbRating = ((desired.imdbRating * 10) / 2);
