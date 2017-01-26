@@ -41,12 +41,16 @@ const bus = new Vue({});
 
 const component = {
 
+  mounted() {
+    this.$parent.$on('searchbox-ITEM_SELECTED', (msg) => {
+      console.info('User has selected an item.');
+
+      // we can process firebase request now
+
+    });
+  },
   computed: {
     details(newVal, oldVal){
-      
-    //  this.$parent.$on('searchbox-ITEM_SELECTED', (msg) => {
-    //     // we can still process data here if needed...
-    // });
 
     return this.$store.getters.getSearchResults;
     }
