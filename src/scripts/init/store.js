@@ -8,7 +8,7 @@ Vue.use(Vuex);
 // the root, initial state object
 const state = {
 	User: {
-		search: []
+		search: {}
 	}
 };
 
@@ -22,9 +22,6 @@ const getters = {
 // define the possible mutations that can be applied to our state
 const mutations = {
 	assign(s, data) {
-		if (s[data.collection].search.length > 1) {
-			s[data.collection].search = [];
-		}
 		const desired = data.result;
 
 		desired.Writer = desired.Writer.replace(/ *\([^)]*\) */g, '').split(',');
@@ -33,12 +30,9 @@ const mutations = {
 		/* eslint-disable no-magic-numbers */
 		desired.imdbRating = ((desired.imdbRating * 10) / 2);
 
-		if (s[data.collection].search.push(data.result)) {
-			return _.uniqWith(s[data.collection].search, _.isEqual);
-		}
+		return Vue.set(s.User.search, data.variable, desired);
 	}
 };
-
 // create the Vuex instance by combining the state and mutations objects
 // then export the Vuex store for use by our components
 const store = new Vuex.Store({

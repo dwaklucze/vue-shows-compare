@@ -11,13 +11,11 @@
     div.wrapper
       div.dropdown-list(:class="{'open': visible }")
       
-        p.menu-label Sugessted
+        p.menu-label Suggestions
 
         ul.menu-list
           li(v-for="(item, index) in suggested")
-            a(@click="select(index)") 
-              {{item.Title}}
-
+            a(@click="select(index)") {{item.Title}}
           li(v-if="!suggested && !isLoading")
             a.disabled No results...
 
@@ -38,7 +36,6 @@
       data() {
 
         return {
-
           isLoading: false,
           visible: false,
           debounce: null,
@@ -52,30 +49,29 @@
         search(){
 
           this.isLoading = true;
-
           this.getSuggestions();
 
         },
         select(index){
 
-          let vm = this;
           let selected = this.suggested[index];
           
-            Vue.axios
-            .get(`https://omdbapi.com/?i=${selected.imdbID}`)
+          return Vue.axios
+          .get(`https://omdbapi.com/?i=${selected.imdbID}`)
             .then(( response ) => {
-
               this.suggested[index] = response.data;
 
               const result = {
-                      result: response.data,
-                      variable: this.variable,
-                      collection: this.collection
+                result: response.data,
+                variable: this.variable,
+                collection: this.collection 
               };
 
               this.$store.commit('assign', result);  
-              this.$parent.$emit('searchbox-ITEM_SELECTED',result);
 
+              // emit to handle event
+              this.$parent.$emit('searchbox-ITEM_SELECTED', result);
+              
               // uncheck only if u want update input with selected item
               // this.lookup = selected.Title;
             });
@@ -89,21 +85,20 @@
           clearTimeout(this.debounce);
 
           if(!this.lookup) {
-
             this.isLoading = false;
             this.suggested = [];
+
             return;
           }
 
-          this.debounce = setTimeout(() => {
+          this.debounce = setTimeout(() => { Vue.axios
 
-            Vue.axios
             .get(`https://omdbapi.com/?s=${this.lookup}`)
             .then(( response ) => this.suggested = response.data.Search);
 
             vm.isLoading = false;
             vm.visible = true;
-          }, 1050);
+          }, 1250);
 
         },
 
@@ -111,27 +106,20 @@
         toggleDropdown() {
 
           if(!this.suggested.length) {
-
             this.visible = false;
-
             return;
           }
-
+          
           this.visible = !this.visible;
-
         },
 
 
         onBlur() {
-
           clearTimeout(this.debounce);
-
           this.debounce = setTimeout(() => {
-
+            
             this.visible = false;
-
           }, 250);
-
         },
       
       },
