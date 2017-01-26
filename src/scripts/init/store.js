@@ -14,8 +14,11 @@ const state = {
 
 // define possible getters
 const getters = {
-	getSearchResults: () => {
+	getSearchResults() {
 		return state.User.search;
+	},
+	countSelections()  {
+		return state.User.search.length;
 	}
 };
 

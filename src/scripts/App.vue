@@ -11,9 +11,16 @@
 </template>
 
 <style lang="!postcss!sass?outputStyle=compressed">
-
 @charset "utf-8";
-
 @import "~bulma/bulma";
-
 </style>
+
+<script>
+import Vue from 'vue';
+
+import Searchbox from './components/searchbox.vue';
+import SearchboxRES from './components/searchbox_result.vue';
+
+Vue.component('searchbox-result', SearchboxRES);
+Vue.component('searchbox', Searchbox);
+</script>

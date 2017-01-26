@@ -14,33 +14,22 @@ import localFirebase from './init/firebase';
 window.firebaseapp = firebase.initializeApp(localFirebase.config);
 window.firedb = window.firebaseapp.database();
 
-
 Vue.use(VueFire);
 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
-import store from './init/store';
-import routes from './init/routes';
-
-import mixins from './init/mixins';
-
-import App from './App.vue';
-import Searchbox from './components/searchbox.vue';
-import SearchboxRES from './components/searchbox_result.vue';
-
 if (process.env.NODE_ENV !== '"production"') {
 	Vue.config.devtools = true;
 }
 
+import App from './App.vue';
+import store from './init/store';
+import routes from './init/routes';
+import mixins from './init/mixins';
 
 Vue.component('App', App);
-// register main app
-/* eslint-disable no-new */
-
-Vue.component('searchbox-result', SearchboxRES);
-Vue.component('searchbox', Searchbox);
 
 export default new Vue({
 	store,

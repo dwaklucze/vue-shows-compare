@@ -105,7 +105,7 @@
 
         toggleDropdown() {
 
-          if(!this.suggested.length) {
+          if(_.isEmpty(this.suggested)) {
             this.visible = false;
             return;
           }

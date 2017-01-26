@@ -4,8 +4,8 @@
   "description": "Simple webpack starter with hot module reload and everything what dev needs do app from scratch.",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node server.js --env development",
-    "build": "webpack --env production",
+    "dev": "babel-node server.js --env 'development'",
+    "build": "webpack --env 'production'",
     "postinstall": "npm run dev"
   },
   "author": "",
